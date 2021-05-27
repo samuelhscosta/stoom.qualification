@@ -1,0 +1,13 @@
+version: '3'
+services:
+   qualification-api:
+      build:
+         context: ./
+         dockerfile: ./Dockerfile
+      image: qualification/api
+      ports:
+         - "8091:8091"
+         - "5005:5005"
+      environment:
+         - ADDITIONAL_OPTS=agentlib:jdwp=transport=de_socket,server=y,suspend=n,adress=*:5005 -Xmx16 - Xms128m -XX:MaxMetaspaceSize=128m
+         - PROFILE=dev
